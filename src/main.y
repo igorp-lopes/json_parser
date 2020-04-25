@@ -12,8 +12,37 @@ int yylex(void);
 
 %%
 
+S:
+  | value {
+    printf("VALIDO\n");
+    exit(0);
+  }
+  ;
 
+value: object
+     | Str
+     | Num
+     | array
+     ;
 
+object: Chave_esq Chave_dir
+      | Chave_esq members Chave_dir
+      ;
+
+members: member
+       | members Virg member
+       ;
+
+member: Str Colon value
+      ;
+
+array: Colc_esq Colc_dir
+     | Colc_esq values Colc_dir
+     ;
+
+values: value
+      | values Virg value
+      ;
 
 %%
 
