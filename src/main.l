@@ -10,6 +10,19 @@ void yyerror(char *);
 
 %%
 
+"{" { return Chave_esq; }
+"}" { return Chave_dir; }
+"[" { return Colc_esq; }
+"]" { return Colc_dir; }
+"," { return Virg; }
+":" { return Colon; }
+[ \t\r\n]+ { } // Lida com os espaços em branco
+
+\"[^"]*\" { return Str; }
+
+[1-9]+\.?[0-9]* { return Num; }
+
+. { yyerror("INVALIDO\n "); }
 
 
 %%
