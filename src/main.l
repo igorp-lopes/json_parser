@@ -14,6 +14,7 @@ void yyerror(char *);
 "}" { return Chave_dir; }
 "[" { return Colc_esq; }
 "]" { return Colc_dir; }
+";" { return Pont_virg; }
 "," { return Virg; }
 ":" { return Colon; }
 [ \t\r\n]+ { } // Lida com os espaços em branco
